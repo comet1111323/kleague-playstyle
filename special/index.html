@@ -37976,15 +37976,20 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
           el("h1", {}, "플레이스타일", el("br"), "알아보고", el("br"), "경품 받아가자!"),
           el("p", { class: "hook" }, "프로 선수와 풋살할 기회까지?"))),
       el("div", { class: "cta-pull stack" },
-        S.type ? btn("내 결과 이어서 보기", result) : btn("1분 퀴즈 시작하기", survey)),
+        btn("1분 퀴즈 시작하기", restart)),
       steps(-1, true),
       el("div", { class: "sec-t" }, "경품"),
       prizeBlock(),
-      S.type ? el("div", { class: "stack", style: "margin-top:14px" }, btn("퀴즈 다시 하기", survey, "btn ghost")) : null,
+      S.type ? el("div", { class: "stack", style: "margin-top:14px" }, btn(S.applied ? "내 응모 보기" : "지난 결과 보기", S.applied ? done : result, "btn ghost")) : null,
       el("p", { class: "meta", style: "text-align:center;margin:12px 0 0" }, "응모 12.1 – 12.14 · 발표 12.15"));
   }
 
   // ---------- 시작 질문 2개 ----------
+  function restart() {
+    const keep = { ref: S.ref, src: S.src, myRef: S.myRef };
+    S = { ...fresh(), ...keep }; save(); log("restart");
+    survey();
+  }
   function survey() {
     brand("kl");
     const ans = { played: null, watched: null };
@@ -38119,7 +38124,7 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
       el("div", { class: "stack" },
         S.applied ? btn("내 응모 보기", done) : btn("럭키드로우 응모하러 가기", goPlab),
         shareBtn(),
-        btn("퀴즈 다시 하기", survey, "btn ghost")));
+        btn("퀴즈 다시 하기", restart, "btn ghost")));
   }
   function shareBtn() {
     return btn("친구한테 퀴즈 보내기", async () => {
