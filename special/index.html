@@ -50,6 +50,13 @@ a { color: inherit; }
 .hero::after { content: ""; position: absolute; width: 230px; height: 250px; right: -50px; top: -26px; background: url("../assets/k_symbol_rw.png") no-repeat right top / contain; opacity: .13; pointer-events: none; }
 .hero::before { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 34px; background: var(--red); clip-path: polygon(0 26px, 100% 4px, 100% 10px, 0 32px); }
 .hero > * { position: relative; z-index: 1; }
+.hero::before { z-index: 2; }
+.hero.home { min-height: 268px; padding: 26px 20px 52px; }
+.hero.home .txt { position: relative; z-index: 3; max-width: 62%; }
+.hero.home h1 { margin-top: 0; font-size: clamp(31px, 8.8vw, 40px); }
+.hero .who { position: absolute; z-index: 1; right: -8px; bottom: 0; height: 252px; width: auto; filter: drop-shadow(0 10px 24px rgba(0,0,0,.35)); }
+.cta-pull { position: relative; z-index: 3; margin-top: -18px; }
+.cta-pull .btn { box-shadow: 0 12px 28px rgba(229,50,59,.35); font-size: 17.5px; min-height: 58px; }
 .hero .ey { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,.16); }
 .hero h1 { font-family: var(--disp); font-weight: 400; font-size: clamp(30px, 8.6vw, 40px); line-height: 1.16; letter-spacing: -.01em; margin: 12px 0 10px; }
 .hero .hook { font-family: var(--disp); font-size: clamp(19px, 5.4vw, 23px); color: var(--lime); margin: 0; line-height: 1.3; }
@@ -99,11 +106,13 @@ h2, h3 { letter-spacing: -.02em; text-wrap: balance; }
 .grand span { display: block; font-size: 14px; color: #ffe5e6; }
 .grand .tg { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
 .grand .tg i { font-style: normal; font-weight: 800; font-size: 12px; background: rgba(0,0,0,.22); border-radius: 6px; padding: 2px 8px; }
-.grand::after { content: ""; position: absolute; width: 120px; height: 130px; right: -18px; bottom: -22px; background: url("../assets/k_symbol_rw.png") no-repeat center / contain; opacity: .22; }
+.grand { min-height: 150px; padding-right: 128px; }
+.grand > * { position: relative; z-index: 1; }
+.grand .who { position: absolute; z-index: 0; right: 0; bottom: 0; height: 150px; width: auto; filter: drop-shadow(0 6px 14px rgba(0,0,0,.3)); }
 .prizes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
 .prize { background: var(--card); border-radius: 16px; padding: 10px 12px 12px; box-shadow: 0 0 0 1px var(--line); display: grid; gap: 4px; }
-.prize .im { height: 84px; display: grid; place-items: center; }
-.prize .im img { max-width: 100%; max-height: 84px; object-fit: contain; }
+.prize .im { height: 92px; display: grid; place-items: center; background: radial-gradient(closest-side, rgba(255,255,255,.13), transparent); }
+.prize .im img { max-width: 100%; max-height: 88px; object-fit: contain; }
 .prize .rk { font-family: var(--mono); font-weight: 700; font-size: 12px; color: var(--red-text); }
 .prize b { font-size: 14px; line-height: 1.35; }
 
@@ -306,7 +315,7 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
     <section class="view" id="view" aria-live="polite"></section>
   </main>
   <footer>
-    <p>연맹조(축산아 26기)가 플랩에 제안하려고 만든 시연 페이지예요. 플랩·K리그 공식 페이지가 아니고, 응모·추첨·플랩 연결은 화면만 보여 줘요. 경품과 일정은 예시예요.</p>
+    <p>연맹조(축산아 26기)가 플랩에 제안하려고 만든 시연 페이지예요. 플랩·K리그 공식 페이지가 아니고, 응모·추첨·플랩 연결은 화면만 보여 줘요. 경품, 일정, 선수 사진은 예시예요.</p>
     <p>선수 유형은 K리그 데이터 포털 2026 시즌 기록(<span id="asof"></span> 기준)으로 나눴고, 유형 이름과 아이콘은 플랩 플레이스타일에서 가져왔어요.</p>
     <p>연구용으로 익명 방문 번호, 시작 질문 답, 고른 팀, 퀴즈 답과 결과, 응모 여부, 유입 경로, 접속 시각, 브라우저 종류를 모아요. 이름·연락처는 받지 않고 2026년 12월에 지워요.</p>
     <div class="demo" aria-label="시연 도구">
@@ -37816,7 +37825,7 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
                  "진공청소기": "ps07", "통곡의 벽": "ps08", "에너자이저": "ps09", "언성히어로": "ps10", "거미손": "ps11" };
   const PRIZES = [
     { rk: "1등", name: "아디다스 프레데터 축구화", img: "img/prize1.png" },
-    { rk: "2등", name: "2026 팀 K리그 유니폼", img: "img/prize2.png" },
+    { rk: "2등", name: "2026 팀 K리그 유니폼", img: "img/prize2.webp" },
     { rk: "3등", name: "K리그 공인구 커넥스트 26 프로", img: "img/prize3.png" },
     { rk: "4등", name: "플랩 매치 참여권", pass: true },
   ];
@@ -37949,7 +37958,7 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
     const h = view.querySelector("h1, h2"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
   }
   const prizeBlock = () => [
-    el("div", { class: "grand" }, el("span", { class: "pill" }, "GRAND PRIZE"),
+    el("div", { class: "grand" }, el("img", { class: "who", src: "img/ki.webp", alt: "" }), el("span", { class: "pill" }, "GRAND PRIZE"),
       el("b", {}, "스페셜 매치 참가권"),
       el("span", {}, "K리그 선수랑 같은 팀으로 풋살해요"),
       el("div", { class: "tg" }, el("i", {}, "12.19 SAT"), el("i", {}, "20명"))),
@@ -37961,18 +37970,18 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
   function home() {
     brand("kl");
     show(
-      el("div", { class: "hero", style: "margin:0 -16px" },
-        el("span", { class: "ey" }, "12월 한정 · K리그 × 플랩"),
-        el("h1", {}, "플레이스타일 알아보고", el("br"), "경품 받아가자!"),
-        el("p", { class: "hook" }, "프로 선수와 풋살할 기회까지?"),
-        el("p", {}, "1분 퀴즈만 해도 럭키드로우 응모권이 생겨요.")),
-      el("div", { class: "pull" }, steps(-1)),
-      el("div", { class: "sec-t" }, "이번 달 경품"),
+      el("div", { class: "hero home", style: "margin:0 -16px" },
+        el("img", { class: "who", src: "img/lsw.webp", alt: "" }),
+        el("div", { class: "txt" },
+          el("h1", {}, "플레이스타일", el("br"), "알아보고", el("br"), "경품 받아가자!"),
+          el("p", { class: "hook" }, "프로 선수와 풋살할 기회까지?"))),
+      el("div", { class: "cta-pull stack" },
+        S.type ? btn("내 결과 이어서 보기", result) : btn("1분 퀴즈 시작하기", survey)),
+      steps(-1, true),
+      el("div", { class: "sec-t" }, "경품"),
       prizeBlock(),
-      el("div", { class: "stack", style: "margin-top:18px" },
-        S.type ? btn("내 결과 이어서 보기", result) : btn("퀴즈 시작하기", survey),
-        S.type ? btn("퀴즈 다시 하기", survey, "btn ghost") : null),
-      el("p", { class: "meta", style: "text-align:center;margin:10px 0 0" }, "응모 12.1 – 12.14 · 발표 12.15"));
+      S.type ? el("div", { class: "stack", style: "margin-top:14px" }, btn("퀴즈 다시 하기", survey, "btn ghost")) : null,
+      el("p", { class: "meta", style: "text-align:center;margin:12px 0 0" }, "응모 12.1 – 12.14 · 발표 12.15"));
   }
 
   // ---------- 시작 질문 2개 ----------
@@ -38095,7 +38104,6 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
       el("div", { class: "act" }, btn(`${pClub.short}${ro(pClub.short)} 정하기`, () => teamSheet(pClub, result), "btn plab"), btn("다른 팀", () => teamSheet(null, result), "btn ghost")));
     show(
       el("div", { class: "hero", style: "margin:0 -16px;padding-bottom:40px" },
-        el("span", { class: "ey" }, "나의 플레이스타일 결과"),
         el("h1", { style: "font-size:clamp(24px,6.6vw,30px)" }, "내 플레이스타일 K리거 찾기")),
       el("div", { class: "rcard" },
         el("div", { class: "k" }, "나의 플레이스타일"),
@@ -38140,7 +38148,6 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
     hope.addEventListener("change", () => { S.hope = hope.checked; save(); });
     show(
       el("div", { class: "hero big", style: "margin:0 -16px" },
-        el("span", { class: "ey" }, "12월 PLAY STYLE QUIZ"),
         el("h1", {}, "LUCKY DRAW"),
         el("p", {}, "응모권 하나로 스페셜 매치와 경품까지")),
       el("div", { class: "pull" }, steps(1)),
