@@ -113,7 +113,6 @@ h2, h3 { letter-spacing: -.02em; text-wrap: balance; }
 .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .seg button { appearance: none; border: 0; cursor: pointer; min-height: 46px; border-radius: 12px; background: rgba(255,255,255,.07); font-weight: 700; }
 .seg button[aria-pressed="true"] { background: #fff; color: var(--page); }
-.bonus { display: flex; align-items: center; gap: 8px; background: rgba(166,245,111,.12); color: var(--lime); border-radius: 12px; padding: 9px 12px; font-size: 13.5px; font-weight: 700; margin: 0 0 6px; }
 .league-h { font-size: 13px; font-weight: 700; color: var(--ink-2); margin: 16px 0 8px; display: flex; align-items: center; gap: 8px; }
 .league-h::before { content: ""; width: 4px; height: 14px; background: var(--red); border-radius: 2px; }
 .clubs { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 8px; }
@@ -160,17 +159,58 @@ h2, h3 { letter-spacing: -.02em; text-wrap: balance; }
 .basis .bt.hot { color: var(--red-text); font-weight: 700; }
 
 /* 응모권 */
-.got { margin: 18px 0 12px; display: grid; justify-items: center; text-align: center; gap: 8px; }
+.got { margin: 22px 0 16px; display: grid; justify-items: center; text-align: center; gap: 8px; }
 .got .t { font-weight: 800; font-size: 18px; }
-.ticket { position: relative; width: min(100%, 300px); height: 118px; display: grid; grid-template-columns: 1fr 74px; background: var(--lime); color: var(--g95); border-radius: 14px;
-  -webkit-mask: radial-gradient(circle 13px at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 13px at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat;
-          mask: radial-gradient(circle 13px at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat, radial-gradient(circle 13px at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat; }
-.ticket .l { padding: 18px 0 0 26px; text-align: left; }
-.ticket .l small { display: block; font-family: var(--mono); font-weight: 700; font-size: 12px; letter-spacing: .1em; }
-.ticket .l b { font-family: var(--disp); font-weight: 400; font-size: 34px; line-height: 1.15; }
-.ticket .r { border-left: 2px dashed rgba(27,49,39,.5); margin: 14px 0; display: grid; place-items: center; font-family: var(--mono); font-weight: 700; font-size: 34px; }
-@media (prefers-reduced-motion: no-preference) { .ticket.pop { animation: pop .5s cubic-bezier(.2,1.4,.4,1); } @keyframes pop { from { transform: scale(.7) rotate(-6deg); opacity: 0; } to { transform: none; opacity: 1; } } }
-.got .why { font-size: 13px; color: var(--ink-2); }
+.ticket { position: relative; width: min(100%, 330px); height: 156px; display: grid; grid-template-columns: 1fr 92px; border-radius: 16px; color: #fff; text-align: left; transform: rotate(-2deg);
+  background: linear-gradient(120deg, transparent 0 63%, rgba(166,245,111,.9) 63% 65.5%, transparent 65.5% 68%, rgba(166,245,111,.35) 68% 69%, transparent 69%), radial-gradient(120% 140% at 0% 0%, #1c3f8f 0%, #0b1a44 55%, #060f2b 100%);
+  box-shadow: 0 18px 40px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.12); overflow: hidden; }
+.ticket::before, .ticket::after { content: ""; position: absolute; right: 81px; width: 22px; height: 22px; border-radius: 999px; background: var(--page); z-index: 3; }
+.ticket::before { top: -11px; } .ticket::after { bottom: -11px; }
+.ticket .wm { position: absolute; left: 118px; top: -30px; width: 150px; height: 170px; background: url("../assets/k_symbol_rw.png") no-repeat center / contain; opacity: .07; }
+.ticket .l { position: relative; padding: 15px 0 0 18px; display: grid; align-content: start; }
+.ticket .logos { display: flex; align-items: center; gap: 7px; }
+.ticket .logos img { height: 13px; display: block; }
+.ticket .logos .pl { height: 15px; }
+.ticket .logos i { font-style: normal; font-size: 11px; opacity: .6; }
+.ticket .l small { margin-top: 14px; font-family: var(--mono); font-weight: 700; font-size: 11px; letter-spacing: .22em; color: var(--lime); }
+.ticket .l b { font-family: var(--disp); font-weight: 400; font-size: 38px; line-height: 1.05; letter-spacing: -.01em; }
+.ticket .l .ft { position: absolute; left: 18px; bottom: 11px; font-family: var(--mono); font-size: 9.5px; letter-spacing: .14em; opacity: .55; }
+.ticket .r { position: relative; z-index: 2; background: var(--lime); color: #071231; display: grid; place-content: center; justify-items: center; border-left: 2px dashed rgba(7,18,49,.55); }
+.ticket .r small { font-family: var(--mono); font-weight: 700; font-size: 10px; letter-spacing: .14em; }
+.ticket .r b { font-family: var(--disp); font-weight: 400; font-size: 52px; line-height: 1; }
+.ticket .shine { position: absolute; inset: 0; z-index: 4; pointer-events: none; background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.28) 45%, transparent 60%); transform: translateX(-120%); }
+@media (prefers-reduced-motion: no-preference) {
+  .ticket.pop { animation: pop .6s cubic-bezier(.2,1.4,.4,1); } @keyframes pop { from { transform: scale(.6) rotate(-12deg); opacity: 0; } to { transform: rotate(-2deg); opacity: 1; } }
+  .ticket .shine { animation: shine 2.6s ease-in-out .5s infinite; } @keyframes shine { 0% { transform: translateX(-120%); } 45%, 100% { transform: translateX(120%); } }
+}
+.got .why { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+.suggest { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; background: var(--card); border-radius: 16px; padding: 14px; box-shadow: 0 0 0 1.5px var(--lime); margin: 0 0 12px; }
+.suggest > img { width: 44px; height: 44px; object-fit: contain; }
+.suggest b { display: block; font-size: 15px; }
+.suggest span { font-size: 13px; color: var(--ink-2); }
+.suggest .act { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.suggest .act .btn { min-height: 46px; font-size: 15px; padding: 10px 16px; }
+.suggest .act .btn.ghost { width: auto; }
+.team { display: inline-flex; align-items: center; gap: 5px; font-weight: 700; color: var(--ink-2); }
+.team img { width: 18px; height: 18px; object-fit: contain; }
+.sheet-bg { position: fixed; inset: 0; z-index: 35; background: rgba(0,0,0,.6); display: grid; align-items: end; justify-items: center; }
+.sheet { width: 100%; max-width: 480px; max-height: 86vh; overflow: auto; background: var(--page); border-radius: 22px 22px 0 0; padding: 10px 16px 24px; box-shadow: 0 -1px 0 var(--line); }
+.sheet .grab { width: 40px; height: 4px; border-radius: 999px; background: rgba(255,255,255,.25); margin: 0 auto 12px; }
+.sheet h3 { font-family: var(--disp); font-weight: 400; font-size: 22px; margin: 4px 0 4px; }
+.sheet .okay { display: grid; justify-items: center; text-align: center; gap: 8px; padding: 10px 0 6px; }
+.sheet .okay img.em { width: 64px; height: 64px; object-fit: contain; }
+.sheet .plus1 { font-family: var(--mono); font-weight: 700; color: var(--g95); background: var(--lime); border-radius: 999px; padding: 2px 12px; font-size: 14px; }
+.alarm { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; background: var(--card); border-radius: 14px; padding: 13px 14px; box-shadow: 0 0 0 1px var(--line); margin-top: 8px; }
+.alarm b { display: block; font-size: 14.5px; }
+.alarm span { font-size: 12.5px; color: var(--muted); }
+.mini-btn.on { background: var(--lime); color: var(--g95); }
+@media (prefers-reduced-motion: no-preference) { .sheet { animation: up .25s ease-out; } @keyframes up { from { transform: translateY(40px); opacity: .5; } to { transform: none; opacity: 1; } } }
+.pass { width: 132px; height: 70px; border-radius: 10px; background: #000; display: grid; grid-template-columns: 1fr 34px; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,.15); transform: rotate(-4deg); }
+.pass .a { padding: 9px 0 0 10px; display: grid; align-content: start; gap: 3px; }
+.pass .a img { height: 15px; width: auto; justify-self: start; }
+.pass .a small { font-family: var(--mono); font-weight: 700; font-size: 8.5px; letter-spacing: .14em; color: var(--lime); margin-top: 6px; }
+.pass .a b { font-size: 12px; font-weight: 800; }
+.pass .b { background: var(--lime); border-left: 2px dashed #000; display: grid; place-items: center; color: #000; font-family: var(--disp); font-size: 20px; }
 
 /* 럭키드로우 */
 .mybox { background: var(--card); border-radius: 18px; padding: 14px 16px 8px; box-shadow: 0 0 0 1px var(--line); }
@@ -37778,12 +37818,12 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
     { rk: "1등", name: "아디다스 프레데터 축구화", img: "img/prize1.png" },
     { rk: "2등", name: "2026 팀 K리그 유니폼", img: "img/prize2.png" },
     { rk: "3등", name: "K리그 공인구 커넥스트 26 프로", img: "img/prize3.png" },
-    { rk: "4등", name: "플랩 매치 참여권", img: "img/prize4.png" },
+    { rk: "4등", name: "플랩 매치 참여권", pass: true },
   ];
 
   // ---------- 상태(이 브라우저에만) ----------
   const KEY = "plab-kl-luckydraw-demo-v2";
-  const fresh = () => ({ played: null, watched: null, clubId: null, answers: [], type: null, player: null, bought: 0, applied: false, hope: true, ref: null, src: null, myRef: null });
+  const fresh = () => ({ played: null, watched: null, clubId: null, answers: [], type: null, player: null, team: null, alarm: false, bought: 0, applied: false, hope: true, ref: null, src: null, myRef: null });
   let S = fresh();
   try { const raw = localStorage.getItem(KEY); if (raw) S = { ...fresh(), ...JSON.parse(raw) }; } catch (e) {}
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
@@ -37849,7 +37889,43 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
   const refCode = () => { if (!S.myRef) { S.myRef = Math.random().toString(36).slice(2, 8).toUpperCase().replace(/[^A-Z0-9]/g, "X"); save(); } return S.myRef; };
 
   // 응모권 = 퀴즈 1 + 응원팀 1 + 12월 매치(시연 0) + 피스 스토어 구매
-  const tickets = () => (S.type ? 1 : 0) + (S.type && S.clubId ? 1 : 0) + S.bought;
+  const tickets = () => (S.type ? 1 : 0) + (S.type && S.team ? 1 : 0) + S.bought;
+
+  function ticketEl(n, pop) {
+    return el("div", { class: "ticket" + (pop ? " pop" : ""), role: "img", "aria-label": `럭키드로우 응모권 ${n}장` },
+      el("span", { class: "wm" }),
+      el("div", { class: "l" },
+        el("div", { class: "logos" }, el("img", { src: "../assets/kleague_logo_rw.png", alt: "" }), el("i", {}, "×"), el("img", { class: "pl", src: "img/plab.png", alt: "" })),
+        el("small", {}, "LUCKY DRAW"), el("b", {}, "응모권"),
+        el("span", { class: "ft" }, "PLAY STYLE QUIZ")),
+      el("div", { class: "r" }, el("small", {}, "TICKET"), el("b", {}, String(n))),
+      el("span", { class: "shine" }));
+  }
+  const teamTag = () => { const c = S.team && clubById(S.team); return c ? el("span", { class: "team" }, EMBLEMS[c.id] ? el("img", { src: EMBLEMS[c.id], alt: "" }) : null, c.short) : null; };
+  // 응원팀만 고르는 시트(퀴즈 다시 안 함): 고르면 +1, 개막전 알림 받기
+  function teamSheet(preset, after) {
+    const bg = el("div", { class: "sheet-bg", onclick: e => { if (e.target === bg) close(); } });
+    const sh = el("div", { class: "sheet", role: "dialog", "aria-modal": "true", "aria-label": "응원팀 정하기" });
+    bg.append(sh); document.body.append(bg); document.documentElement.style.overflow = "hidden";
+    function close() { bg.remove(); document.documentElement.style.overflow = ""; after && after(); }
+    function set(c) { S.team = c.id; save(); log("team", { team: c.id }); okay(c); }
+    function grid() {
+      const g = lg => el("div", { class: "clubs" }, D.clubs.filter(c => c.league === lg).map(c =>
+        el("button", { class: "club", type: "button", onclick: () => set(c) }, EMBLEMS[c.id] ? el("img", { src: EMBLEMS[c.id], alt: "" }) : null, c.short)));
+      sh.replaceChildren(el("div", { class: "grab" }), el("h3", {}, "응원팀 고르기"),
+        el("div", { class: "league-h" }, "K리그1"), g("K1"), el("div", { class: "league-h" }, "K리그2"), g("K2"),
+        el("div", { class: "stack", style: "margin-top:14px" }, btn("닫기", close, "btn ghost")));
+    }
+    function okay(c) {
+      const ab = btn(S.alarm ? "받는 중" : "알림 받기", () => { S.alarm = !S.alarm; save(); log("alarm", { on: String(S.alarm) }); ab.textContent = S.alarm ? "받는 중" : "알림 받기"; ab.classList.toggle("on", S.alarm); }, "mini-btn" + (S.alarm ? " on" : ""));
+      sh.replaceChildren(el("div", { class: "grab" }),
+        el("div", { class: "okay" }, EMBLEMS[c.id] ? el("img", { class: "em", src: EMBLEMS[c.id], alt: "" }) : null,
+          el("h3", {}, `${c.short} 응원팀으로 정했어요`), el("span", { class: "plus1" }, "응모권 +1")),
+        el("div", { class: "alarm" }, el("div", {}, el("b", {}, `${c.short} 개막전 알림`), el("span", {}, "2027 시즌 개막전 예매 열리면 알려 드려요")), ab),
+        el("div", { class: "stack", style: "margin-top:16px" }, btn("확인", close)));
+    }
+    preset ? set(preset) : grid();
+  }
 
   function steps(now, mini) {
     const names = ["플레이스타일 퀴즈", "럭키드로우", "스페셜 매치"];
@@ -37878,7 +37954,7 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
       el("span", {}, "K리그 선수랑 같은 팀으로 풋살해요"),
       el("div", { class: "tg" }, el("i", {}, "12.19 SAT"), el("i", {}, "20명"))),
     el("div", { class: "prizes" }, PRIZES.map(p => el("div", { class: "prize" },
-      el("div", { class: "im" }, el("img", { src: p.img, alt: "" })), el("span", { class: "rk" }, p.rk), el("b", {}, p.name)))),
+      el("div", { class: "im" }, p.pass ? el("div", { class: "pass", "aria-hidden": "true" }, el("div", { class: "a" }, el("img", { src: "img/plab.png", alt: "" }), el("small", {}, "MATCH PASS"), el("b", {}, "매치 참여권")), el("div", { class: "b" }, "1")) : el("img", { src: p.img, alt: "" })), el("span", { class: "rk" }, p.rk), el("b", {}, p.name)))),
   ];
 
   // ---------- 홈 ----------
@@ -37928,13 +38004,12 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
     show(steps(0, true),
       el("h2", {}, "응원하는 팀 있어요?"),
       el("p", { class: "sub" }, "고른 팀에서 나랑 닮은 선수를 찾아 줘요."),
-      el("div", { class: "bonus" }, "응원팀 고르면 응모권 +1"),
       el("div", { class: "league-h" }, "K리그1"), grid("K1"),
       el("div", { class: "league-h" }, "K리그2"), grid("K2"),
       el("div", { class: "stack", style: "margin-top:14px" }, btn("아직 없어요", () => choose(null), "btn ghost")),
       btn("‹ 이전", survey, "back"));
   }
-  function choose(c) { S.clubId = c ? c.id : null; S.answers = []; save(); log("start"); question(0); }
+  function choose(c) { S.clubId = c ? c.id : null; S.team = S.clubId; S.answers = []; save(); log("start"); question(0); }
 
   // ---------- 9문항 (기존 퀴즈 문항·채점 그대로) ----------
   function question(i) {
@@ -38010,9 +38085,14 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
       : p.label === "가장 비슷한 선수" && p.hasRep ? `기록 모양이 내 답이랑 제일 닮은 선수예요.`
       : p.label === "가장 비슷한 선수" ? "이 팀엔 딱 맞는 선수가 없어서 제일 가까운 선수를 골랐어요." : null;
     const n = tickets();
-    const tk = el("div", { class: "ticket" + (fresh_result ? " pop" : "") },
-      el("div", { class: "l" }, el("small", {}, "LUCKY DRAW"), el("b", {}, "응모권")), el("div", { class: "r" }, String(n)));
+    const tk = ticketEl(n, fresh_result);
     fresh_result = false;
+    const pClub = clubByShort(p.club);
+    const ro = w => iga(w) === "이" ? "으로" : "로";
+    const suggest = S.team || !pClub ? null : el("div", { class: "suggest" },
+      EMBLEMS[pClub.id] ? el("img", { src: EMBLEMS[pClub.id], alt: "" }) : el("span"),
+      el("div", {}, el("b", {}, `${pClub.short}${ro(pClub.short)} 응원팀 정하면 응모권 +1`), el("span", {}, `${p.name} 선수가 뛰는 팀이에요`)),
+      el("div", { class: "act" }, btn(`${pClub.short}${ro(pClub.short)} 정하기`, () => teamSheet(pClub, result), "btn plab"), btn("다른 팀", () => teamSheet(null, result), "btn ghost")));
     show(
       el("div", { class: "hero", style: "margin:0 -16px;padding-bottom:40px" },
         el("span", { class: "ey" }, "나의 플레이스타일 결과"),
@@ -38026,7 +38106,8 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
       el("div", { class: "got" },
         el("div", { class: "t" }, S.applied ? "럭키드로우에 응모했어요" : `응모권 ${n}장을 받았어요!`),
         tk,
-        el("div", { class: "why" }, S.clubId ? "퀴즈 +1 · 응원팀 +1" : "퀴즈 +1 · 응원팀 고르면 +1 더")),
+        el("div", { class: "why" }, S.team ? "퀴즈 +1 · 응원팀 +1" : "퀴즈 +1")),
+      suggest,
       el("div", { class: "stack" },
         S.applied ? btn("내 응모 보기", done) : btn("럭키드로우 응모하러 가기", goPlab),
         shareBtn(),
@@ -38070,7 +38151,10 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
         el("div", { class: "hd" }, el("b", {}, "모은 응모권"), el("span", { class: "cnt" }, `${n}장`)),
         el("ul", {},
           el("li", {}, el("span", {}, "플레이스타일 퀴즈"), el("span", { class: "ok" }, "+1")),
-          el("li", {}, el("span", {}, "응원팀 정하기"), S.clubId ? el("span", { class: "ok" }, "+1") : btn("고르기", pickClub, "mini-btn")),
+          el("li", {}, el("span", {}, "응원팀 정하기", S.team ? el("span", { class: "s" }, teamTag()) : null),
+            S.team ? el("span", { class: "ok" }, "+1") : btn("고르기", () => teamSheet(null, draw), "mini-btn")),
+          S.team ? el("li", {}, el("span", {}, "개막전 알림", el("span", { class: "s" }, "2027 시즌 개막전 예매 열리면 알려 드려요")),
+            btn(S.alarm ? "받는 중" : "알림 받기", () => { S.alarm = !S.alarm; save(); log("alarm", { on: String(S.alarm) }); draw(); }, "mini-btn" + (S.alarm ? " on" : ""))) : null,
           el("li", {}, el("span", {}, "12월 플랩 매치", el("span", { class: "s" }, "매치 한 번 뛸 때마다 +1")), el("a", { class: "mini-btn", href: PLAB_URL, target: "_blank", rel: "noopener", onclick: () => log("match_link") }, "매치 찾기")),
           el("li", {}, el("span", {}, "피스 스토어", el("span", { class: "s" }, `30피스로 1장${S.bought ? ` · 산 응모권 ${S.bought}장` : ""}`)), btn("사기", () => { S.bought++; save(); log("buy", { bought: String(S.bought) }); toast("30피스로 응모권 1장 샀어요"); draw(); }, "mini-btn")))),
       el("label", { class: "hope", for: "hope" }, hope, el("span", {}, el("b", {}, "스페셜 매치도 나갈래요"), el("span", {}, "체크한 분 중에서 20명 뽑아요"))),
@@ -38097,8 +38181,8 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
       el("h2", { style: "margin-top:24px" }, just ? "응모 완료!" : "내 응모"),
       el("p", { class: "sub" }, "당첨되면 12.15(화)에 플랩 알림으로 알려 드려요."),
       steps(S.hope !== false ? 2 : 1, true),
+      el("div", { class: "got" }, ticketEl(S.appliedN || tickets(), !!just)),
       el("div", { class: "stub" },
-        el("div", { class: "top" }, el("small", {}, "LUCKY DRAW"), el("b", {}, `응모권 ${S.appliedN || tickets()}장`)),
         el("div", { class: "bot" },
           el("div", {}, el("span", {}, "내 유형"), el("b", {}, `${S.type} · ${S.player.name}`)),
           el("div", {}, el("span", {}, "스페셜 매치"), el("b", {}, S.hope !== false ? "참가 희망" : "희망 안 함")),
@@ -38113,7 +38197,7 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
   document.getElementById("go-home").addEventListener("click", home);
   document.getElementById("demo-reset").addEventListener("click", () => { try { localStorage.removeItem(KEY); } catch (e) {} S = fresh(); S.src = "direct"; save(); home(); });
   document.getElementById("demo-skip").addEventListener("click", () => {
-    S.played = true; S.watched = true; S.clubId = "K05"; S.answers = [2, 3, 3, 3, 4, 3, 3, 2, 3]; save();
+    S.played = true; S.watched = true; S.clubId = null; S.team = null; S.answers = [2, 3, 3, 3, 4, 3, 3, 2, 3]; save();
     finish(score());
   });
   log("visit");
