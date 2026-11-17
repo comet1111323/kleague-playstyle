@@ -37961,10 +37961,10 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
     const h = view.querySelector("h1, h2"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
   }
   const prizeBlock = () => [
-    el("div", { class: "grand" }, el("img", { class: "who", src: "img/ki.webp", alt: "" }), el("span", { class: "pill" }, "GRAND PRIZE"),
+    el("div", { class: "grand" }, el("img", { class: "who", src: "img/ki.webp", alt: "" }), el("span", { class: "pill" }, "BONUS DRAW"),
       el("b", {}, "스페셜 매치 참가권"),
       el("span", {}, "K리그 선수랑 같은 팀으로 풋살해요"),
-      el("div", { class: "tg" }, el("i", {}, "12.19 SAT"), el("i", {}, "20명"))),
+      el("div", { class: "tg" }, el("i", {}, "12.19 SAT"), el("i", {}, "15명"))),
     el("div", { class: "prizes" }, PRIZES.map(p => el("div", { class: "prize" },
       el("div", { class: "im" }, p.pass ? el("div", { class: "pass", "aria-hidden": "true" }, el("div", { class: "a" }, el("img", { src: "img/plab.png", alt: "" }), el("small", {}, "MATCH PASS"), el("b", {}, "매치 참여권")), el("div", { class: "b" }, "1")) : el("img", { src: p.img, alt: "" })), el("span", { class: "rk" }, p.rk), el("b", {}, p.name)))),
   ];
@@ -38172,13 +38172,13 @@ footer .demo button { appearance: none; border: 0; background: none; padding: 6p
             btn(S.alarm ? "받는 중" : "알림 받기", () => { S.alarm = !S.alarm; save(); log("alarm", { on: String(S.alarm) }); draw(); }, "mini-btn" + (S.alarm ? " on" : ""))) : null,
           el("li", {}, el("span", {}, "12월 플랩 매치", el("span", { class: "s" }, "매치 한 번 뛸 때마다 +1")), el("a", { class: "mini-btn", href: PLAB_URL, target: "_blank", rel: "noopener", onclick: () => log("match_link") }, "매치 찾기")),
           el("li", {}, el("span", {}, "피스 스토어", el("span", { class: "s" }, `30피스로 1장${S.bought ? ` · 산 응모권 ${S.bought}장` : ""}`)), btn("사기", () => { S.bought++; save(); log("buy", { bought: String(S.bought) }); toast("30피스로 응모권 1장 샀어요"); draw(); }, "mini-btn")))),
-      el("label", { class: "hope", for: "hope" }, hope, el("span", {}, el("b", {}, "스페셜 매치도 나갈래요"), el("span", {}, "체크한 분 중에서 20명 뽑아요"))),
+      el("label", { class: "hope", for: "hope" }, hope, el("span", {}, el("b", {}, "스페셜 매치도 나갈래요"), el("span", {}, "체크한 분 중에서 15명 따로 뽑아요"))),
       el("div", { class: "stack" }, btn(S.applied ? `응모권 ${n}장으로 다시 응모하기` : `응모권 ${n}장으로 응모하기`, apply)),
       el("p", { class: "meta", style: "text-align:center;margin:10px 0 0" }, "발표 12.15(화) · 플랩 알림으로 알려 드려요"),
       el("div", { class: "sec-t" }, "스페셜 매치"),
       el("ul", { class: "facts" },
         el("li", {}, el("span", {}, "언제"), "12.19(토) 오후"),
-        el("li", {}, el("span", {}, "팀"), "같은 플레이스타일끼리 5명씩 4팀"),
+        el("li", {}, el("span", {}, "팀"), "같은 플레이스타일끼리 5명씩 3팀"),
         el("li", {}, el("span", {}, "주장"), "팀마다 K리그 선수 1명")),
       btn("‹ 내 결과", result, "back"));
   }
